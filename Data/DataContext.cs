@@ -12,6 +12,8 @@ namespace DotAgroAPI.Data
         public DbSet<Headquarter> Headquarters { get; set; }
         public DbSet<Admin> Admins { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseMySQL("Name=DBConnection");
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Salary>(entity =>
