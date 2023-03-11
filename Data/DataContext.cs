@@ -10,6 +10,7 @@ namespace DotAgroAPI.Data
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Headquarter> Headquarters { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,6 +54,16 @@ namespace DotAgroAPI.Data
                 entity.HasKey(e => e.Id).HasName("Headquarter_PK");
                 entity.Property(e => e.Id).HasColumnName("id");
                 entity.Property(e => e.City).HasColumnName("city");
+            });
+
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.ToTable(nameof(Admin));
+
+                entity.HasKey(e => e.Id).HasName("Headquarter_PK");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Mail).HasColumnName("mail");
+                entity.Property(e => e.Password).HasColumnName("password");
             });
 
             OnModelCreatingPartial(modelBuilder);
